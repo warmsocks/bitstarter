@@ -73,7 +73,7 @@ var checkUrl = function(html, checksfile) {
 var buildCheckUrlFn = function(checksfile) {
     var checkUrlFn = function(result, response) {
 	if (result instanceof Error) {
-	    console.error('Error: ' /*+ util.format(response.message)*/);
+	    console.error('Error: ' + util.format(response.message));
 	} else {
 	    outJson = JSON.stringify(checkUrl(result, checksfile), null, 4);
 	    console.log(outJson);
@@ -102,9 +102,8 @@ if(require.main == module) {
 	var outJson = JSON.stringify(checkJson, null, 4);
 	console.log(outJson);
     } else {
-	console.log('Checking URL ' + program.url + '\n');
+	// console.log('Checking URL ' + program.url + '\n');
 	var checkUrlFn = buildCheckUrlFn(program.checks);
-	console.log("Pt a\n");
 	rest.get(program.url).on('complete', checkUrlFn);
     }
 } else {
